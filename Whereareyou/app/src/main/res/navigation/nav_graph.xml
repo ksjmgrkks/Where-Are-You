@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/sign_in">
+
+    <fragment
+        android:id="@+id/sign_in"
+        android:name="com.android.whereareyou.sign.presentation.signin.SignInFragment"
+        tools:layout="@layout/fragment_sign_in" >
+        <action
+            android:id="@+id/action_sign_in_to_weekly_schedule"
+            app:destination="@id/weekly_schedule" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/weekly_schedule"
+        android:name="com.android.whereareyou.schedule.presentation.weekly.WeeklyScheduleFragment"
+        tools:layout="@layout/fragment_weekly_schedule" >
+        <action
+            android:id="@+id/action_weekly_schedule_to_daily_schedule"
+            app:destination="@id/daily_schedule" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/daily_schedule"
+        android:name="com.android.whereareyou.schedule.presentation.daily.DailyScheduleFragment"
+        tools:layout="@layout/fragment_daily_schedule" />
+
+
+</navigation>

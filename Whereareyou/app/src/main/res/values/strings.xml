@@ -5,4 +5,8 @@
     <string name="fragment_weekly_schedule_text1">캘린더로 보기   ></string>
     <string name="location_sharing">위치 공유</string>
     <string name="get_directions">길찾기</string>
+
+    <string name="on_response_network_state_unknown_error">body값이 null입니다.</string>
+    <string name="on_failure_network_state_unknown_error">onFailure에 진입한 후,IoException 이외의 에러</string>
+    <string name="unsupported_operation_exception">UnsupportedOperationException</string>
 </resources>
