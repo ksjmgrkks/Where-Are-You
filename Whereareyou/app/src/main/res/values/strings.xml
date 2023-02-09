@@ -9,4 +9,5 @@
     <string name="on_response_network_state_unknown_error">body값이 null입니다.</string>
     <string name="on_failure_network_state_unknown_error">onFailure에 진입한 후,IoException 이외의 에러</string>
     <string name="unsupported_operation_exception">UnsupportedOperationException</string>
+    <string name="network_unavailable_exception">사용 가능한 네트워크가 없습니다.</string>
 </resources>
