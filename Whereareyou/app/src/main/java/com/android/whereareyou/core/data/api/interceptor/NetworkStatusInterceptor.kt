@@ -1,7 +1,7 @@
 package com.android.whereareyou.core.data.api.interceptor
 
 import com.android.whereareyou.core.data.api.ConnectionManager
-import com.android.whereareyou.core.domain.NetworkUnavailableException
+import com.android.whereareyou.core.domain.model.NetworkUnavailableException
 import okhttp3.Interceptor
 import okhttp3.Response
 import javax.inject.Inject

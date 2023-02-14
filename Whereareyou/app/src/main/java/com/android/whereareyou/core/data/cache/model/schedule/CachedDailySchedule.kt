@@ -10,7 +10,7 @@ data class CachedDailySchedule(
     val weeklyScheduleId: Long = 0L,
     val time: String,
     val title: String,
-    val friends: List<String>,
+//    val friends: List<String>,
     val departures: String,
     val arrivals: String
 ) {
@@ -21,7 +21,7 @@ data class CachedDailySchedule(
                 weeklyScheduleId = domainModel.weeklyScheduleId,
                 time = domainModel.time,
                 title = domainModel.title,
-                friends = domainModel.friends,
+//                friends = domainModel.friends,
                 departures = domainModel.departures,
                 arrivals = domainModel.arrivals
             )

@@ -1,0 +1,102 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "b991a8a31e919b0cd56dbd67138bd2a7",
+    "entities": [
+      {
+        "tableName": "weeklySchedule",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`weeklyScheduleId` INTEGER NOT NULL, `date` TEXT NOT NULL, `day` TEXT NOT NULL, `title` TEXT NOT NULL, PRIMARY KEY(`weeklyScheduleId`))",
+        "fields": [
+          {
+            "fieldPath": "weeklyScheduleId",
+            "columnName": "weeklyScheduleId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "date",
+            "columnName": "date",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "day",
+            "columnName": "day",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "title",
+            "columnName": "title",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "weeklyScheduleId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "dailySchedule",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`dailyScheduleId` INTEGER NOT NULL, `weeklyScheduleId` INTEGER NOT NULL, `time` TEXT NOT NULL, `title` TEXT NOT NULL, `departures` TEXT NOT NULL, `arrivals` TEXT NOT NULL, PRIMARY KEY(`dailyScheduleId`))",
+        "fields": [
+          {
+            "fieldPath": "dailyScheduleId",
+            "columnName": "dailyScheduleId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "weeklyScheduleId",
+            "columnName": "weeklyScheduleId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "time",
+            "columnName": "time",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "title",
+            "columnName": "title",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "departures",
+            "columnName": "departures",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "arrivals",
+            "columnName": "arrivals",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "dailyScheduleId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'b991a8a31e919b0cd56dbd67138bd2a7')"
+    ]
+  }
+}
