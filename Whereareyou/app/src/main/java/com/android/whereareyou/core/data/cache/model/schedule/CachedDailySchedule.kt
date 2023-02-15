@@ -2,6 +2,7 @@ package com.android.whereareyou.core.data.cache.model.schedule
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.android.whereareyou.core.domain.model.Friend
 import com.android.whereareyou.core.domain.model.schedule.DailySchedule
 
 @Entity(tableName = "dailySchedule")
@@ -10,7 +11,7 @@ data class CachedDailySchedule(
     val weeklyScheduleId: Long = 0L,
     val time: String,
     val title: String,
-//    val friends: List<String>,
+    val friends: List<Friend>,
     val departures: String,
     val arrivals: String
 ) {
@@ -21,7 +22,7 @@ data class CachedDailySchedule(
                 weeklyScheduleId = domainModel.weeklyScheduleId,
                 time = domainModel.time,
                 title = domainModel.title,
-//                friends = domainModel.friends,
+                friends = domainModel.friends,
                 departures = domainModel.departures,
                 arrivals = domainModel.arrivals
             )

@@ -1,11 +1,29 @@
 <resources>
     <string name="app_name">어디야?</string>
+    <!--로그인, 간편가입 화면-->
     <string name="fragment_check_in_text1">위치기반 일정관리 앱-</string>
     <string name="fragment_check_in_text2"><u>간편가입</u></string>
+    <!--주간 스케줄 화면-->
     <string name="fragment_weekly_schedule_text1">캘린더로 보기   ></string>
+    <!--일간 스케줄 화면-->
     <string name="location_sharing">위치 공유</string>
     <string name="get_directions">길찾기</string>
 
+    <!--일정 추가 화면-->
+    <string name="fragment_add_schedule_explain">*는 필수 입력 요소입니다</string>
+    <string name="fragment_add_schedule_date">날짜</string>
+    <string name="fragment_add_schedule_time">시간</string>
+    <string name="fragment_add_schedule_am">AM</string>
+    <string name="fragment_add_schedule_pm">PM</string>
+    <string name="fragment_add_schedule_title">일정명</string>
+    <string name="fragment_add_schedule_title_hint">일정명을 10자 이내로 입력</string>
+    <string name="fragment_add_schedule_friend">친구</string>
+    <string name="fragment_add_schedule_friend_hint">만날 친구명 검색</string>
+    <string name="fragment_add_schedule_departures">출발지</string>
+    <string name="fragment_add_schedule_arrivals">도착지</string>
+    <string name="fragment_add_schedule_save">저장하기</string>
+
+    <!--네트워크-->
     <string name="on_response_network_state_unknown_error">body값이 null입니다.</string>
     <string name="on_failure_network_state_unknown_error">onFailure에 진입한 후,IoException 이외의 에러</string>
     <string name="unsupported_operation_exception">UnsupportedOperationException</string>

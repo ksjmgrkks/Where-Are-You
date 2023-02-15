@@ -21,12 +21,24 @@
         <action
             android:id="@+id/action_weekly_schedule_to_daily_schedule"
             app:destination="@id/daily_schedule" />
+        <action
+            android:id="@+id/action_weekly_schedule_to_add_schedule"
+            app:destination="@id/add_schedule" />
     </fragment>
 
     <fragment
         android:id="@+id/daily_schedule"
         android:name="com.android.whereareyou.schedule.presentation.daily.DailyScheduleFragment"
-        tools:layout="@layout/fragment_daily_schedule" />
+        tools:layout="@layout/fragment_daily_schedule" >
+        <action
+            android:id="@+id/action_daily_schedule_to_add_schedule"
+            app:destination="@id/add_schedule" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/add_schedule"
+        android:name="com.android.whereareyou.schedule.presentation.add.AddScheduleFragment"
+        tools:layout="@layout/fragment_add_schedule" />
 
 
 </navigation>

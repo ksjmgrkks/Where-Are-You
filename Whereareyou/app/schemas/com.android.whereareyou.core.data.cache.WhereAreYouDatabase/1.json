@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "b991a8a31e919b0cd56dbd67138bd2a7",
+    "identityHash": "441acfb341917134df612003c726e0b6",
     "entities": [
       {
         "tableName": "weeklySchedule",
@@ -44,7 +44,7 @@
       },
       {
         "tableName": "dailySchedule",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`dailyScheduleId` INTEGER NOT NULL, `weeklyScheduleId` INTEGER NOT NULL, `time` TEXT NOT NULL, `title` TEXT NOT NULL, `departures` TEXT NOT NULL, `arrivals` TEXT NOT NULL, PRIMARY KEY(`dailyScheduleId`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`dailyScheduleId` INTEGER NOT NULL, `weeklyScheduleId` INTEGER NOT NULL, `time` TEXT NOT NULL, `title` TEXT NOT NULL, `friends` TEXT NOT NULL, `departures` TEXT NOT NULL, `arrivals` TEXT NOT NULL, PRIMARY KEY(`dailyScheduleId`))",
         "fields": [
           {
             "fieldPath": "dailyScheduleId",
@@ -67,6 +67,12 @@
           {
             "fieldPath": "title",
             "columnName": "title",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "friends",
+            "columnName": "friends",
             "affinity": "TEXT",
             "notNull": true
           },
@@ -96,7 +102,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'b991a8a31e919b0cd56dbd67138bd2a7')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '441acfb341917134df612003c726e0b6')"
     ]
   }
 }
