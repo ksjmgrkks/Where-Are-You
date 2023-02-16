@@ -6,19 +6,23 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.android.whereareyou.R
+import com.android.whereareyou.core.BaseFragment
+import com.android.whereareyou.core.MainViewModel
 import com.android.whereareyou.databinding.FragmentWeeklyScheduleBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class WeeklyScheduleFragment : Fragment() {
+class WeeklyScheduleFragment : BaseFragment() {
     private var _binding: FragmentWeeklyScheduleBinding? = null
     private val binding
         get() = requireNotNull(_binding)
 
     private val viewModel: WeeklyScheduleViewModel by viewModels()
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -35,6 +39,8 @@ class WeeklyScheduleFragment : Fragment() {
     }
 
     private fun setupUI() {
+        activityViewModel.toolBarVisibility.value = true
+        activityViewModel.fabVisibility.value = true
     }
 
     override fun onDestroyView() {

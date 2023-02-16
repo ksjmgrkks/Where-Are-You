@@ -6,8 +6,8 @@
     <data>
         <import type="android.view.View" />
         <variable
-            name="fabVisibility"
-            type="boolean" />
+            name="vm"
+            type="com.android.whereareyou.core.MainViewModel" />
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
@@ -24,7 +24,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:visibility="gone">
+        app:setVisible="@{vm.fabVisibility}">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -75,6 +75,7 @@
         android:src="@drawable/ic_add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:setVisible="@{vm.fabVisibility}"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

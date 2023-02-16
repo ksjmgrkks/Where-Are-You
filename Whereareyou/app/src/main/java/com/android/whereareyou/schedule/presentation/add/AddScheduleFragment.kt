@@ -9,6 +9,7 @@ import androidx.databinding.adapters.ViewBindingAdapter.setClickListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.android.whereareyou.R
+import com.android.whereareyou.core.BaseFragment
 import com.android.whereareyou.databinding.FragmentAddScheduleBinding
 import com.android.whereareyou.databinding.FragmentDailyScheduleBinding
 import com.android.whereareyou.databinding.FragmentWeeklyScheduleBinding
@@ -17,7 +18,7 @@ import com.android.whereareyou.schedule.presentation.weekly.WeeklyScheduleViewMo
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class AddScheduleFragment : Fragment() {
+class AddScheduleFragment : BaseFragment() {
     private var _binding: FragmentAddScheduleBinding? = null
     private val binding
         get() = requireNotNull(_binding)
@@ -40,6 +41,8 @@ class AddScheduleFragment : Fragment() {
     }
 
     private fun setupUI() {
+        activityViewModel.toolBarVisibility.value = false
+        activityViewModel.fabVisibility.value = false
     }
 
     override fun onDestroyView() {

@@ -11,6 +11,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.android.whereareyou.R
 import com.android.whereareyou.core.data.api.interceptor.log.Logger
 import com.bumptech.glide.Glide
@@ -42,6 +43,7 @@ inline fun CoroutineScope.createExceptionHandler(
 
 fun FragmentActivity.getForegroundFragment(): Fragment? = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)?.childFragmentManager?.fragments?.get(0)
 fun FragmentActivity.moveScreen(id: Int) = Navigation.findNavController(this, R.id.nav_host_fragment).navigate(id)
+fun Fragment.moveScreen(id: Int) = findNavController().navigate(id)
 internal fun View.backgroundDrawable(@DrawableRes drawable: Int) { background = context.drawableRes(drawable) }
 internal fun Context.drawableRes(@DrawableRes drawable: Int) = ContextCompat.getDrawable(this, drawable)
 internal fun View.backgroundColor(@ColorRes color: Int) = setBackgroundColor(context.getColorCompat(color))

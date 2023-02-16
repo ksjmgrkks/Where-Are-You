@@ -8,13 +8,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.android.whereareyou.R
+import com.android.whereareyou.core.BaseFragment
 import com.android.whereareyou.databinding.FragmentDailyScheduleBinding
 import com.android.whereareyou.databinding.FragmentWeeklyScheduleBinding
 import com.android.whereareyou.schedule.presentation.weekly.WeeklyScheduleViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DailyScheduleFragment : Fragment() {
+class DailyScheduleFragment : BaseFragment() {
     private var _binding: FragmentDailyScheduleBinding? = null
     private val binding
         get() = requireNotNull(_binding)
@@ -37,6 +38,8 @@ class DailyScheduleFragment : Fragment() {
     }
 
     private fun setupUI() {
+        activityViewModel.toolBarVisibility.value = true
+        activityViewModel.fabVisibility.value = true
     }
 
     override fun onDestroyView() {
