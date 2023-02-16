@@ -41,8 +41,7 @@ class AddScheduleFragment : BaseFragment() {
     }
 
     private fun setupUI() {
-        activityViewModel.toolBarVisibility.value = false
-        activityViewModel.fabVisibility.value = false
+        activityViewModel.settingUI(false)
     }
 
     override fun onDestroyView() {

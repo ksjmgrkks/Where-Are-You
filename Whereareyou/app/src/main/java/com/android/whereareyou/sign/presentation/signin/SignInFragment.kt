@@ -41,8 +41,7 @@ class SignInFragment : BaseFragment() {
     }
 
     private fun setupUI() {
-        activityViewModel.toolBarVisibility.value = false
-        activityViewModel.fabVisibility.value = false
+        activityViewModel.settingUI(false)
 
         binding.imageViewKakaoLogin.setOnClickListener {
             moveScreen(R.id.action_sign_in_to_weekly_schedule)

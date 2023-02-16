@@ -39,8 +39,7 @@ class WeeklyScheduleFragment : BaseFragment() {
     }
 
     private fun setupUI() {
-        activityViewModel.toolBarVisibility.value = true
-        activityViewModel.fabVisibility.value = true
+        activityViewModel.settingUI(true)
     }
 
     override fun onDestroyView() {
