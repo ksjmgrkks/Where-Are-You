@@ -10,10 +10,6 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(
 ) : ViewModel() {
-    private val _toolBarVisibility = MutableLiveData(false)
-    val toolBarVisibility: LiveData<Boolean>
-        get() = _toolBarVisibility
-
     private val _fabVisibility = MutableLiveData(false)
     val fabVisibility: LiveData<Boolean>
         get() = _fabVisibility
@@ -22,7 +18,6 @@ class MainViewModel @Inject constructor(
     }
 
     fun settingUI(visibility: Boolean){
-        _toolBarVisibility.postValue(visibility)
         _fabVisibility.postValue(visibility)
     }
     override fun onCleared() {
