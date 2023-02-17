@@ -130,4 +130,9 @@ dependencies {
 
     //MaterialCalendarView
     implementation "com.github.prolificinteractive:material-calendarview:$material_calendarview_version"
+
+    //카카오 로그인, 친구
+    implementation "com.kakao.sdk:v2-all-rx:2.12.1" // 전체 모듈 설치, 2.11.0 버전부터 지원
+    implementation "com.kakao.sdk:v2-user-rx:2.12.1" // 카카오 로그인
+    implementation "com.kakao.sdk:v2-talk-rx:2.12.1" // 친구, 메시지(카카오톡)
 }

@@ -1,22 +1,23 @@
-package com.android.whereareyou.sign.presentation.signin
+package com.android.whereareyou.signin.presentation
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import com.android.whereareyou.R
 import com.android.whereareyou.core.BaseFragment
-import com.android.whereareyou.core.MainViewModel
+import com.android.whereareyou.core.data.api.interceptor.log.Logger
 import com.android.whereareyou.core.util.moveScreen
 import com.android.whereareyou.databinding.FragmentSignInBinding
+import com.kakao.sdk.common.util.Utility
+import com.kakao.sdk.user.UserApiClient
+import com.kakao.sdk.user.rx
 import dagger.hilt.android.AndroidEntryPoint
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.rxkotlin.addTo
 
 @AndroidEntryPoint
 class SignInFragment : BaseFragment() {
@@ -42,13 +43,22 @@ class SignInFragment : BaseFragment() {
 
     private fun setupUI() {
         activityViewModel.settingUI(false)
-
         binding.imageViewKakaoLogin.setOnClickListener {
-            moveScreen(R.id.action_sign_in_to_weekly_schedule)
+            kakaoLogIn()
         }
     }
+    private fun kakaoLogIn() = UserApiClient.rx.loginWithKakaoTalk(requireContext())
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribe({ token ->
+            Logger.i("로그인 성공 ${token.accessToken}")
+            moveScreen(R.id.action_sign_in_to_weekly_schedule)
+        }, { error ->
+            Logger.i("로그인 실패 $error")
+        })
+        .addTo(viewModel.disposables)
     override fun onDestroyView() {
         super.onDestroyView()
+        viewModel.disposables.clear()
         _binding = null
     }
 }

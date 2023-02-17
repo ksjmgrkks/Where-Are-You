@@ -1,12 +1,13 @@
 package com.android.whereareyou.schedule.presentation.calendar
 
 import androidx.lifecycle.ViewModel
+import com.android.whereareyou.core.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class CalendarScheduleViewModel @Inject constructor(
-) : ViewModel() {
+) : BaseViewModel() {
     init {
 
     }

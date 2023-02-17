@@ -9,7 +9,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-) : ViewModel() {
+) : BaseViewModel() {
     private val _fabVisibility = MutableLiveData(false)
     val fabVisibility: LiveData<Boolean>
         get() = _fabVisibility
