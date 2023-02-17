@@ -11,6 +11,7 @@ import com.android.whereareyou.core.util.getForegroundFragment
 import com.android.whereareyou.core.util.moveScreen
 import com.android.whereareyou.databinding.ActivityMainBinding
 import com.android.whereareyou.databinding.FragmentSignInBinding
+import com.android.whereareyou.schedule.presentation.calendar.CalendarScheduleFragment
 import com.android.whereareyou.schedule.presentation.daily.DailyScheduleFragment
 import com.android.whereareyou.schedule.presentation.weekly.WeeklyScheduleFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -40,6 +41,7 @@ class MainActivity : AppCompatActivity() {
             when(getForegroundFragment()){
               is WeeklyScheduleFragment -> { moveScreen(R.id.action_weekly_schedule_to_add_schedule) }
               is DailyScheduleFragment -> { moveScreen(R.id.action_daily_schedule_to_add_schedule) }
+              is CalendarScheduleFragment -> { moveScreen(R.id.action_calendar_schedule_to_add_schedule) }
               else -> {
                   Logger.d("else: ${getForegroundFragment()?.javaClass}")}
             }

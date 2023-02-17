@@ -24,6 +24,9 @@
         <action
             android:id="@+id/action_weekly_schedule_to_add_schedule"
             app:destination="@id/add_schedule" />
+        <action
+            android:id="@+id/action_weekly_schedule_to_calendar_schedule"
+            app:destination="@id/calendar_schedule" />
     </fragment>
 
     <fragment
@@ -36,9 +39,20 @@
     </fragment>
 
     <fragment
+        android:id="@+id/calendar_schedule"
+        android:name="com.android.whereareyou.schedule.presentation.calendar.CalendarScheduleFragment"
+        tools:layout="@layout/fragment_calendar_schedule" >
+        <action
+            android:id="@+id/action_calendar_schedule_to_add_schedule"
+            app:destination="@id/add_schedule" />
+        <action
+            android:id="@+id/action_calendar_schedule_to_daily_schedule"
+            app:destination="@id/daily_schedule" />
+    </fragment>
+
+    <fragment
         android:id="@+id/add_schedule"
         android:name="com.android.whereareyou.schedule.presentation.add.AddScheduleFragment"
         tools:layout="@layout/fragment_add_schedule" />
-
 
 </navigation>

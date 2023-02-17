@@ -1,4 +1,4 @@
-package com.android.whereareyou.schedule.presentation.weekly
+package com.android.whereareyou.schedule.presentation.calendar
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,23 +13,24 @@ import androidx.lifecycle.ViewModelProvider
 import com.android.whereareyou.R
 import com.android.whereareyou.core.BaseFragment
 import com.android.whereareyou.core.MainViewModel
-import com.android.whereareyou.core.util.moveScreen
+import com.android.whereareyou.databinding.FragmentCalendarScheduleBinding
 import com.android.whereareyou.databinding.FragmentWeeklyScheduleBinding
+import com.android.whereareyou.schedule.presentation.weekly.WeeklyScheduleViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class WeeklyScheduleFragment : BaseFragment() {
-    private var _binding: FragmentWeeklyScheduleBinding? = null
+class CalendarScheduleFragment : BaseFragment() {
+    private var _binding: FragmentCalendarScheduleBinding? = null
     private val binding
         get() = requireNotNull(_binding)
 
-    private val viewModel: WeeklyScheduleViewModel by viewModels()
+    private val viewModel: CalendarScheduleViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_weekly_schedule, container, false)
+        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_calendar_schedule, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
@@ -41,9 +42,6 @@ class WeeklyScheduleFragment : BaseFragment() {
 
     private fun setupUI() {
         activityViewModel.settingUI(true)
-        binding.textViewCalendar.setOnClickListener {
-            moveScreen(R.id.action_weekly_schedule_to_calendar_schedule)
-        }
     }
 
     override fun onDestroyView() {
