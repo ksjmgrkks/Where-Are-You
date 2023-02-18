@@ -42,8 +42,15 @@ inline fun CoroutineScope.createExceptionHandler(
 }
 
 fun FragmentActivity.getForegroundFragment(): Fragment? = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)?.childFragmentManager?.fragments?.get(0)
-fun FragmentActivity.moveScreen(id: Int) = Navigation.findNavController(this, R.id.nav_host_fragment).navigate(id)
-fun Fragment.moveScreen(id: Int) = findNavController().navigate(id)
+fun FragmentActivity.moveScreen(id: Int) {
+    if (id != 0)
+        Navigation.findNavController(this, R.id.nav_host_fragment).navigate(id)
+}
+fun Fragment.moveScreen(id: Int) {
+    if (id != 0)
+        findNavController().navigate(id)
+}
+
 internal fun View.backgroundDrawable(@DrawableRes drawable: Int) { background = context.drawableRes(drawable) }
 internal fun Context.drawableRes(@DrawableRes drawable: Int) = ContextCompat.getDrawable(this, drawable)
 internal fun View.backgroundColor(@ColorRes color: Int) = setBackgroundColor(context.getColorCompat(color))

@@ -39,23 +39,23 @@ class SignInFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupUI()
+        setObserver()
+        //키해시 구하기
+        //Logger.i("keyhash: ${Utility.getKeyHash(requireContext())}")
     }
 
     private fun setupUI() {
         activityViewModel.settingUI(false)
         binding.imageViewKakaoLogin.setOnClickListener {
-            kakaoLogIn()
+            viewModel.kakaoLogIn(UserApiClient.rx.loginWithKakaoTalk(requireContext()))
         }
     }
-    private fun kakaoLogIn() = UserApiClient.rx.loginWithKakaoTalk(requireContext())
-        .observeOn(AndroidSchedulers.mainThread())
-        .subscribe({ token ->
-            Logger.i("로그인 성공 ${token.accessToken}")
-            moveScreen(R.id.action_sign_in_to_weekly_schedule)
-        }, { error ->
-            Logger.i("로그인 실패 $error")
-        })
-        .addTo(viewModel.disposables)
+
+    private fun setObserver() {
+        viewModel.moveScreen.observe(viewLifecycleOwner) { event ->
+            event?.run { getContentIfNotHandled()?.let { moveScreen(it) } }
+        }
+    }
     override fun onDestroyView() {
         super.onDestroyView()
         viewModel.disposables.clear()
