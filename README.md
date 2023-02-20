@@ -7,7 +7,7 @@
 | Jetpack Components | Room, LiveData, Lifecycle, ViewModel, Compose, NavigationComponent         |
 | Dependency Injection | Hilt                                                                       |
 | Network | Retrofit, OkHttp, Moshi                                                           |
-| Asynchronous Processing | RxJava3                                                         |
+| Asynchronous Processing | RxJava                                                         |
 | Third Party Library | Glide, Lottie                                                      |
 | Strategy | Git Flow                                                                   |
 | CI/CD | GitHub Action(KtLint, AAB, APK, Complie Check)                             |
