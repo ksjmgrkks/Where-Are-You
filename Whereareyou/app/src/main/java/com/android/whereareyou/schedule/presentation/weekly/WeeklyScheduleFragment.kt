@@ -11,11 +11,15 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.android.whereareyou.R
+import com.android.whereareyou.WhereAreYouApplication
 import com.android.whereareyou.core.BaseFragment
 import com.android.whereareyou.core.MainViewModel
 import com.android.whereareyou.core.util.moveScreen
+import com.android.whereareyou.core.util.preference.PreferenceConstants
 import com.android.whereareyou.databinding.FragmentWeeklyScheduleBinding
 import dagger.hilt.android.AndroidEntryPoint
+import com.android.whereareyou.core.util.preference.PreferenceHelper.get
+import com.android.whereareyou.core.util.preference.PreferenceHelper.set
 
 @AndroidEntryPoint
 class WeeklyScheduleFragment : BaseFragment() {
@@ -44,6 +48,7 @@ class WeeklyScheduleFragment : BaseFragment() {
         binding.textViewCalendar.setOnClickListener {
             moveScreen(R.id.action_weekly_schedule_to_calendar_schedule)
         }
+        binding.textViewWeeklySchedule.text = getString(R.string.fragment_weekly_schedule_text2,  WhereAreYouApplication.prefs[PreferenceConstants.NICKNAME, ""] ?: "")
     }
 
     override fun onDestroyView() {

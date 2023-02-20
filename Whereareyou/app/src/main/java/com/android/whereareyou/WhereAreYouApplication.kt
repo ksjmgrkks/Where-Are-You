@@ -12,7 +12,7 @@ import dagger.hilt.android.HiltAndroidApp
 class WhereAreYouApplication : Application() {
     companion object {
         lateinit var application: WhereAreYouApplication
-        var prefs: SharedPreferences? = null
+        lateinit var prefs: SharedPreferences
         const val NATIVE_APP_KEY = "019737c35bd5581de03ff2046d6b6203"
     }
     init {
@@ -24,6 +24,6 @@ class WhereAreYouApplication : Application() {
         // Kakao SDK 초기화
         KakaoSdk.init(this, NATIVE_APP_KEY)
         // SharedPreferences 초기화
-        prefs = applicationContext?.let { PreferenceHelper.defaultPrefs(it) }
+        prefs = applicationContext?.let { PreferenceHelper.defaultPrefs(it) }!!
     }
 }

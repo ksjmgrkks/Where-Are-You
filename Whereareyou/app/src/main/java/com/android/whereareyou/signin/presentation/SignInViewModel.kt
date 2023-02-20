@@ -7,11 +7,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.android.whereareyou.R
+import com.android.whereareyou.WhereAreYouApplication
 import com.android.whereareyou.WhereAreYouApplication.Companion.application
 import com.android.whereareyou.core.BaseViewModel
 import com.android.whereareyou.core.data.api.interceptor.log.Logger
 import com.android.whereareyou.core.presentation.Event
 import com.android.whereareyou.core.util.moveScreen
+import com.android.whereareyou.core.util.preference.PreferenceConstants
+import com.android.whereareyou.core.util.preference.PreferenceHelper.set
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.user.UserApiClient
 import com.kakao.sdk.user.rx
@@ -37,11 +40,14 @@ class SignInViewModel @Inject constructor(
         single.observeOn(AndroidSchedulers.mainThread())
             .subscribe({ token ->
                 Logger.i("로그인 성공 ${token.accessToken}")
+                WhereAreYouApplication.prefs[PreferenceConstants.OAUTH_TOKEN] = token.accessToken
                 _moveScreen.postValue(Event(R.id.action_sign_in_to_weekly_schedule))
             }, { error ->
                 Logger.i("로그인 실패 $error")
             })
             .addTo(disposables)
+
+
 
 
     override fun onCleared() {

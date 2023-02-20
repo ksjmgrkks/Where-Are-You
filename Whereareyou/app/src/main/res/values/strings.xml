@@ -5,6 +5,7 @@
     <string name="fragment_check_in_text2"><u>간편가입</u></string>
     <!--주간 스케줄 화면-->
     <string name="fragment_weekly_schedule_text1">캘린더로 보기   ></string>
+    <string name="fragment_weekly_schedule_text2">%1$s 님의 이번주 일정</string>
     <!--일간 스케줄 화면-->
     <string name="location_sharing">위치 공유</string>
     <string name="get_directions">길찾기</string>
