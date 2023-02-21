@@ -5,6 +5,7 @@ import android.content.Context
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
@@ -56,3 +57,5 @@ internal fun Context.drawableRes(@DrawableRes drawable: Int) = ContextCompat.get
 internal fun View.backgroundColor(@ColorRes color: Int) = setBackgroundColor(context.getColorCompat(color))
 internal fun Context.getColorCompat(@ColorRes color: Int) = ContextCompat.getColor(this, color)
 internal fun TextView.textColor(@ColorRes color: Int) = setTextColor(context.getColorCompat(color))
+
+fun showToast(context: Context, msg : String) = Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()

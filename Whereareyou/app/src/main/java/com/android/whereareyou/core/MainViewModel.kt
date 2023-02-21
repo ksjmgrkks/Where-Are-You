@@ -16,10 +16,7 @@ class MainViewModel @Inject constructor(
     init {
 
     }
-
-    fun settingUI(visibility: Boolean){
-        _fabVisibility.postValue(visibility)
-    }
+    fun settingUI(visibility: Boolean) = _fabVisibility.postValue(visibility)
     override fun onCleared() {
         super.onCleared()
     }
