@@ -20,7 +20,6 @@ import com.kakao.sdk.common.model.ClientErrorCause
 import com.kakao.sdk.user.UserApiClient
 import com.kakao.sdk.user.rx
 import com.uber.autodispose.ScopeProvider
-import com.uber.autodispose.android.lifecycle.AndroidLifecycleScopeProvider
 import com.uber.autodispose.autoDispose
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -74,9 +73,6 @@ class SignInFragment : BaseFragment() {
         UserApiClient.rx.loginWithKakaoTalk(context)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .doOnError {
-                Logger.e(message = "로그인 실패 ${it.message}")
-            }
             .flatMap {
                 Logger.i("로그인 성공 ${it.accessToken}")
                 //유저 정보 요청
