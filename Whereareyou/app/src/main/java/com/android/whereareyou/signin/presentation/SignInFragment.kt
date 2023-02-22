@@ -10,9 +10,11 @@ import com.android.whereareyou.R
 import com.android.whereareyou.WhereAreYouApplication
 import com.android.whereareyou.core.BaseFragment
 import com.android.whereareyou.core.data.api.interceptor.log.Logger
+import com.android.whereareyou.core.util.hide
 import com.android.whereareyou.core.util.moveScreen
 import com.android.whereareyou.core.util.preference.PreferenceConstants
 import com.android.whereareyou.core.util.preference.PreferenceHelper.set
+import com.android.whereareyou.core.util.show
 import com.android.whereareyou.core.util.showToast
 import com.android.whereareyou.databinding.FragmentSignInBinding
 import com.kakao.sdk.common.model.ClientError
@@ -59,11 +61,13 @@ class SignInFragment : BaseFragment() {
         activityViewModel.settingUI(false)
         binding.imageViewKakaoLogin.setOnClickListener {
             requireContext().run {
+                binding.progressBar.show()
                 // 카카오톡이 설치되어 있으면 카카오톡으로 로그인, 아니면 카카오 설치 유도 토스트 메시지
                 if (UserApiClient.instance.isKakaoTalkLoginAvailable(this)) {
                     kakaoLogin(this)
                 } else {
                     showToast(this, getString(R.string.fragment_check_in_install_kakao))
+                    binding.progressBar.hide()
                 }
             }
         }
@@ -93,6 +97,7 @@ class SignInFragment : BaseFragment() {
                         user.kakaoAccount?.profile?.nickname
                     moveScreen(R.id.action_sign_in_to_weekly_schedule)
                 }
+                binding.progressBar.hide()
             }, { error ->
                 if (error is ClientError && error.reason == ClientErrorCause.Cancelled) {
                     Logger.e(message = "로그인 실패 ${error.message}")
@@ -104,6 +109,6 @@ class SignInFragment : BaseFragment() {
                         getString(R.string.fragment_check_in_link_kakao_account)
                     )
                 }
-
+                binding.progressBar.hide()
             })
 }

@@ -34,17 +34,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_app_explain" />
 
-    <TextView
-        android:id="@+id/textView_check_in"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="@string/fragment_check_in_text2"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/imageView_kakao_login"
-        app:layout_constraintStart_toStartOf="@+id/imageView_kakao_login"
-        app:layout_constraintTop_toBottomOf="@+id/imageView_kakao_login" />
-
     <ImageView
         android:id="@+id/imageView_kakao_login"
         android:layout_width="wrap_content"
@@ -54,5 +43,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_app_name"
         app:srcCompat="@drawable/kakao_login_medium_wide" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:indeterminateTint="@color/app_blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

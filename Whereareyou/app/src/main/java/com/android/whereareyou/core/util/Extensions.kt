@@ -17,6 +17,7 @@ import com.android.whereareyou.R
 import com.android.whereareyou.core.data.api.interceptor.log.Logger
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.jakewharton.rxbinding4.view.visibility
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -57,5 +58,9 @@ internal fun Context.drawableRes(@DrawableRes drawable: Int) = ContextCompat.get
 internal fun View.backgroundColor(@ColorRes color: Int) = setBackgroundColor(context.getColorCompat(color))
 internal fun Context.getColorCompat(@ColorRes color: Int) = ContextCompat.getColor(this, color)
 internal fun TextView.textColor(@ColorRes color: Int) = setTextColor(context.getColorCompat(color))
+
+fun View.show() { visibility = View.VISIBLE }
+
+fun View.hide() { visibility = View.GONE }
 
 fun showToast(context: Context, msg : String) = Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
