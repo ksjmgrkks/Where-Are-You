@@ -10,7 +10,6 @@ import com.android.whereareyou.core.data.api.interceptor.log.Logger
 import com.android.whereareyou.core.util.getForegroundFragment
 import com.android.whereareyou.core.util.moveScreen
 import com.android.whereareyou.databinding.ActivityMainBinding
-import com.android.whereareyou.databinding.FragmentSignInBinding
 import com.android.whereareyou.schedule.presentation.calendar.CalendarScheduleFragment
 import com.android.whereareyou.schedule.presentation.daily.DailyScheduleFragment
 import com.android.whereareyou.schedule.presentation.weekly.WeeklyScheduleFragment

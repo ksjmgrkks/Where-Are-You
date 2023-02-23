@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/sign_in">
+    app:startDestination="@id/login">
 
     <fragment
-        android:id="@+id/sign_in"
-        android:name="com.android.whereareyou.signin.presentation.SignInFragment"
-        tools:layout="@layout/fragment_sign_in" >
+        android:id="@+id/login"
+        android:name="com.android.whereareyou.login.presentation.LoginFragment"
+        tools:layout="@layout/fragment_login" >
         <action
-            android:id="@+id/action_sign_in_to_weekly_schedule"
+            android:id="@+id/action_login_to_weekly_schedule"
             app:destination="@id/weekly_schedule" />
     </fragment>
 
