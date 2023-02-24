@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.android.whereareyou.R
 import com.android.whereareyou.core.BaseFragment
+import com.android.whereareyou.core.util.moveScreen
 import com.android.whereareyou.databinding.FragmentDailyScheduleBinding
 import com.android.whereareyou.databinding.FragmentWeeklyScheduleBinding
 import com.android.whereareyou.schedule.presentation.weekly.WeeklyScheduleViewModel
@@ -34,13 +35,10 @@ class DailyScheduleFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupUI()
+        binding.floatingActionButton.setOnClickListener {
+            moveScreen(R.id.action_daily_schedule_to_add_schedule)
+        }
     }
-
-    private fun setupUI() {
-        activityViewModel.settingUI(true)
-    }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

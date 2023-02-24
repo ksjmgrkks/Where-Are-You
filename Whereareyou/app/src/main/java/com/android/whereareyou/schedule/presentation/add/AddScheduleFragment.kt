@@ -37,13 +37,7 @@ class AddScheduleFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupUI()
     }
-
-    private fun setupUI() {
-        activityViewModel.settingUI(false)
-    }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

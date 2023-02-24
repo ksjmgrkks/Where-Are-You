@@ -26,21 +26,5 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/nav_graph" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginBottom="15dp"
-        android:clickable="true"
-        android:focusable="true"
-        app:backgroundTint="@color/app_blue"
-        app:tint="@color/white"
-        android:src="@drawable/ic_add"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:setVisible="@{vm.fabVisibility}"
-        />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

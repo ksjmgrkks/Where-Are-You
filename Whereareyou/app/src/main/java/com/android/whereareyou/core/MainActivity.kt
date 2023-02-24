@@ -26,26 +26,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.lifecycleOwner = this
-        binding.vm = viewModel
-        setupUI()
     }
-
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
     }
-
-    private fun setupUI(){
-        binding.floatingActionButton.setOnClickListener {
-            when(getForegroundFragment()){
-              is WeeklyScheduleFragment -> { moveScreen(R.id.action_weekly_schedule_to_add_schedule) }
-              is DailyScheduleFragment -> { moveScreen(R.id.action_daily_schedule_to_add_schedule) }
-              is CalendarScheduleFragment -> { moveScreen(R.id.action_calendar_schedule_to_add_schedule) }
-              else -> {
-                  Logger.d("else: ${getForegroundFragment()?.javaClass}")}
-            }
-        }
-    }
-
-
 }

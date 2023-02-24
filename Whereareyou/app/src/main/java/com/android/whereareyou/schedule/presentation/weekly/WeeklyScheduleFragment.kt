@@ -44,9 +44,11 @@ class WeeklyScheduleFragment : BaseFragment() {
     }
 
     private fun setupUI() {
-        activityViewModel.settingUI(true)
         binding.textViewCalendar.setOnClickListener {
             moveScreen(R.id.action_weekly_schedule_to_calendar_schedule)
+        }
+        binding.floatingActionButton.setOnClickListener {
+            moveScreen(R.id.action_weekly_schedule_to_add_schedule)
         }
         binding.textViewWeeklySchedule.text = getString(R.string.fragment_weekly_schedule_text2,  WhereAreYouApplication.prefs[PreferenceConstants.NICKNAME, ""] ?: "")
     }

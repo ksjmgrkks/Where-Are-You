@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.android.whereareyou.R
 import com.android.whereareyou.core.BaseFragment
 import com.android.whereareyou.core.MainViewModel
+import com.android.whereareyou.core.util.moveScreen
 import com.android.whereareyou.databinding.FragmentCalendarScheduleBinding
 import com.android.whereareyou.databinding.FragmentWeeklyScheduleBinding
 import com.android.whereareyou.schedule.presentation.weekly.WeeklyScheduleViewModel
@@ -37,11 +38,9 @@ class CalendarScheduleFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupUI()
-    }
-
-    private fun setupUI() {
-        activityViewModel.settingUI(true)
+        binding.floatingActionButton.setOnClickListener {
+            moveScreen(R.id.action_calendar_schedule_to_add_schedule)
+        }
     }
 
     override fun onDestroyView() {

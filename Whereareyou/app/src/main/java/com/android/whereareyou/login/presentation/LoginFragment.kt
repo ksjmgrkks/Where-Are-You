@@ -42,7 +42,9 @@ class LoginFragment : BaseFragment() {
         //키해시 구하기
         //Logger.i("keyhash: ${Utility.getKeyHash(requireContext())}")
         autoDisposable.bindTo(this.lifecycle)
-        setupUI()
+        binding.imageViewKakaoLogin.setOnClickListener {
+            signInStateHolder.kakaoLogin()
+        }
         //uiState Observer
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -70,19 +72,5 @@ class LoginFragment : BaseFragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    private fun setupUI() {
-        activityViewModel.settingUI(false)
-        binding.imageViewKakaoLogin.setOnClickListener {
-            requireContext().run {
-                // 카카오톡이 설치되어 있으면 카카오톡으로 로그인, 아니면 카카오 설치 유도 토스트 메시지
-                if (UserApiClient.instance.isKakaoTalkLoginAvailable(this)) {
-                    signInStateHolder.kakaoLogin()
-                } else {
-                    showToast(this, getString(R.string.fragment_check_in_install_kakao))
-                }
-            }
-        }
     }
 }

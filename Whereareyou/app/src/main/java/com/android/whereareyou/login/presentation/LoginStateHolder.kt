@@ -1,6 +1,7 @@
 package com.android.whereareyou.login.presentation
 
 import android.content.Context
+import androidx.core.content.ContentProviderCompat.requireContext
 import com.android.whereareyou.R
 import com.android.whereareyou.WhereAreYouApplication
 import com.android.whereareyou.core.data.api.interceptor.log.Logger
@@ -27,7 +28,18 @@ class LoginStateHolder(val context : Context, private val autoDisposable: AutoDi
     private val _uiState = MutableStateFlow(LoginUiState())
     val uiState: StateFlow<LoginUiState> = _uiState.asStateFlow()
 
-    fun kakaoLogin() {
+    fun kakaoLogin(){
+        context.run {
+            // 카카오톡이 설치되어 있으면 카카오톡으로 로그인, 아니면 카카오 설치 유도 토스트 메시지
+            if (UserApiClient.instance.isKakaoTalkLoginAvailable(this)) {
+                loginProcess()
+            } else {
+                showToast(this, getString(R.string.fragment_check_in_install_kakao))
+            }
+        }
+    }
+
+    private fun loginProcess() {
         _uiState.update { it.copy(isLoading = true) }
         UserApiClient.rx.loginWithKakaoTalk(context)
             .subscribeOn(Schedulers.io())
