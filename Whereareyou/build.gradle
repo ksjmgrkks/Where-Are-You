@@ -26,8 +26,7 @@ buildscript {
         material_version = '1.6.1'
         timber_version = '5.0.1'
         material_calendarview_version = '1.6.1'
-        rx2_auto_dispose_version = '1.4.0'
-        rx3_auto_dispose_version = '2.1.1'
+        auto_dispose_version = '2.1.1'
         rx_binding_version = '4.0.0'
     }
 }

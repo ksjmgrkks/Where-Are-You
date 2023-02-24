@@ -19,6 +19,7 @@ import com.android.whereareyou.core.data.api.interceptor.log.Logger
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.jakewharton.rxbinding4.view.visibility
+import io.reactivex.disposables.Disposable
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -65,3 +66,7 @@ fun View.show() { visibility = View.VISIBLE }
 fun View.hide() { visibility = View.GONE }
 
 fun showToast(context: Context, msg : String) = Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
+
+fun Disposable.addToAutoDisposable(autoDisposable: AutoDisposable) {
+    autoDisposable.add(this)
+}

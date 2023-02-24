@@ -1,7 +1,6 @@
 package com.android.whereareyou.login.presentation
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,22 +10,18 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.android.whereareyou.R
 import com.android.whereareyou.core.BaseFragment
-import com.android.whereareyou.core.util.hide
-import com.android.whereareyou.core.util.moveScreen
-import com.android.whereareyou.core.util.show
-import com.android.whereareyou.core.util.showToast
+import com.android.whereareyou.core.util.*
 import com.android.whereareyou.databinding.FragmentLoginBinding
 import com.kakao.sdk.user.UserApiClient
-import com.uber.autodispose.ScopeProvider
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
 class LoginFragment : BaseFragment() {
-    private val scopeProvider = ScopeProvider.UNBOUND
+    private val autoDisposable = AutoDisposable()
     private val signInStateHolder: LoginStateHolder by lazy {
-        LoginStateHolder(requireContext(), scopeProvider)
+        LoginStateHolder(requireContext(), autoDisposable)
     }
     private var _binding: FragmentLoginBinding? = null
     private val binding
@@ -46,6 +41,7 @@ class LoginFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         //키해시 구하기
         //Logger.i("keyhash: ${Utility.getKeyHash(requireContext())}")
+        autoDisposable.bindTo(this.lifecycle)
         setupUI()
         //uiState Observer
         viewLifecycleOwner.lifecycleScope.launch {

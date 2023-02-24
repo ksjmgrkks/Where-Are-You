@@ -75,20 +75,12 @@ dependencies {
     implementation "com.trello.rxlifecycle3:rxlifecycle-kotlin:$rx_lifecycle_version"
     implementation "com.trello.rxlifecycle3:rxlifecycle-android-lifecycle-kotlin:$rx_lifecycle_version"
 
-    // RxJava2 AutoDispose
-    implementation "com.uber.autodispose:autodispose:$rx2_auto_dispose_version"
-    implementation "com.uber.autodispose:autodispose-lifecycle:$rx2_auto_dispose_version"
-    implementation "com.uber.autodispose:autodispose-android:$rx2_auto_dispose_version"
-    implementation "com.uber.autodispose:autodispose-rxlifecycle3:$rx2_auto_dispose_version"
-    implementation "com.uber.autodispose:autodispose-android-archcomponents:$rx2_auto_dispose_version"
-    implementation "com.uber.autodispose:autodispose-android-archcomponents-test:$rx2_auto_dispose_version"  // For Test
-
     // RxJava3 AutoDispose
-    implementation "com.uber.autodispose2:autodispose:$rx3_auto_dispose_version"
-    implementation "com.uber.autodispose2:autodispose-lifecycle:$rx3_auto_dispose_version"
-    implementation "com.uber.autodispose2:autodispose-android:$rx3_auto_dispose_version"
-    implementation "com.uber.autodispose2:autodispose-androidx-lifecycle:$rx3_auto_dispose_version"
-    implementation "com.uber.autodispose2:autodispose-androidx-lifecycle-test:$rx3_auto_dispose_version" // For Test
+    implementation "com.uber.autodispose2:autodispose:$auto_dispose_version"
+    implementation "com.uber.autodispose2:autodispose-lifecycle:$auto_dispose_version"
+    implementation "com.uber.autodispose2:autodispose-android:$auto_dispose_version"
+    implementation "com.uber.autodispose2:autodispose-androidx-lifecycle:$auto_dispose_version"
+    implementation "com.uber.autodispose2:autodispose-androidx-lifecycle-test:$auto_dispose_version" // For Test
 
     // RxBinding
     implementation "com.jakewharton.rxbinding4:rxbinding:$rx_binding_version"
