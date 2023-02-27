@@ -25,6 +25,7 @@
     <string name="fragment_add_schedule_departures">출발지</string>
     <string name="fragment_add_schedule_arrivals">도착지</string>
     <string name="fragment_add_schedule_save">저장하기</string>
+    <string name="asterisk">*</string>
 
     <!--네트워크-->
     <string name="on_response_network_state_unknown_error">body값이 null입니다.</string>
