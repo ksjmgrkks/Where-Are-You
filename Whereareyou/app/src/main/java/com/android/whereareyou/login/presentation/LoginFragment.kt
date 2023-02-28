@@ -12,16 +12,18 @@ import com.android.whereareyou.R
 import com.android.whereareyou.core.BaseFragment
 import com.android.whereareyou.core.util.*
 import com.android.whereareyou.databinding.FragmentLoginBinding
-import com.kakao.sdk.user.UserApiClient
+import com.uber.autodispose.android.lifecycle.AndroidLifecycleScopeProvider
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
 class LoginFragment : BaseFragment() {
-    private val autoDisposable = AutoDisposable()
+    private val lifecycleScopeProvider : AndroidLifecycleScopeProvider by lazy {
+        AndroidLifecycleScopeProvider.from(this, Lifecycle.Event.ON_DESTROY)
+    }
     private val signInStateHolder: LoginStateHolder by lazy {
-        LoginStateHolder(requireContext(), autoDisposable)
+        LoginStateHolder(requireContext(), lifecycleScopeProvider)
     }
     private var _binding: FragmentLoginBinding? = null
     private val binding
@@ -41,7 +43,6 @@ class LoginFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         //키해시 구하기
         //Logger.i("keyhash: ${Utility.getKeyHash(requireContext())}")
-        autoDisposable.bindTo(this.lifecycle)
         binding.imageViewKakaoLogin.setOnClickListener {
             signInStateHolder.kakaoLogin()
         }

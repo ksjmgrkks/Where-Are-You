@@ -66,7 +66,3 @@ fun View.show() { visibility = View.VISIBLE }
 fun View.hide() { visibility = View.GONE }
 
 fun showToast(context: Context, msg : String) = Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
-
-fun Disposable.addToAutoDisposable(autoDisposable: AutoDisposable) {
-    autoDisposable.add(this)
-}

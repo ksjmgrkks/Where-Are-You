@@ -1,7 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     ext {
-        kotlin_version = '1.6.21'
+        kotlin_version = '1.7.20'
         compileSdkVersion = 33
         targetSdkVersion = compileSdkVersion
         minSdkVersion = 23
@@ -13,20 +13,21 @@ buildscript {
         retrofit_version = '2.9.0'
         moshi_converter_version = '2.9.0'
         moshi_version = '1.13.0'
-        room_version = '2.4.2'
+        room_version = '2.5.0'
         hilt_version = '2.44'
         rx_lifecycle_version = '3.1.0'
         rx_android_version = '2.1.1'
         coroutine_version = '1.4.1'
         life_cycle_version = '2.5.1'
-        okhttp_version = '4.9.0'
+        okhttp_version = '4.9.3'
         nav_version = '2.5.3'
         paging_version = '3.1.1'
-        glide_version = '4.13.2'
+        glide_version = '4.14.2'
         material_version = '1.6.1'
         timber_version = '5.0.1'
         material_calendarview_version = '1.6.1'
-        auto_dispose_version = '2.1.1'
+        autodispose_version = '1.4.0'
+        autodispose2_version = '2.1.1'
         rx_binding_version = '4.0.0'
     }
 }

@@ -1,13 +1,10 @@
 package com.android.whereareyou.login.presentation
 
 import android.content.Context
-import androidx.core.content.ContentProviderCompat.requireContext
 import com.android.whereareyou.R
 import com.android.whereareyou.WhereAreYouApplication
 import com.android.whereareyou.core.data.api.interceptor.log.Logger
 import com.android.whereareyou.core.presentation.Event
-import com.android.whereareyou.core.util.AutoDisposable
-import com.android.whereareyou.core.util.addToAutoDisposable
 import com.android.whereareyou.core.util.preference.PreferenceConstants
 import com.android.whereareyou.core.util.preference.PreferenceHelper.set
 import com.android.whereareyou.core.util.showToast
@@ -16,6 +13,9 @@ import com.kakao.sdk.common.model.ClientError
 import com.kakao.sdk.common.model.ClientErrorCause
 import com.kakao.sdk.user.UserApiClient
 import com.kakao.sdk.user.rx
+import com.uber.autodispose.AutoDispose
+import com.uber.autodispose.ScopeProvider
+import com.uber.autodispose.autoDispose
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -23,7 +23,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
-class LoginStateHolder(val context : Context, private val autoDisposable: AutoDisposable) {
+class LoginStateHolder(val context : Context, private val scopeProvider : ScopeProvider) {
 
     private val _uiState = MutableStateFlow(LoginUiState())
     val uiState: StateFlow<LoginUiState> = _uiState.asStateFlow()
@@ -51,6 +51,7 @@ class LoginStateHolder(val context : Context, private val autoDisposable: AutoDi
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
             }
+            .autoDispose(scopeProvider)
             .subscribe({ user ->
                 Logger.i(
                     "사용자 정보 요청 성공" +
@@ -75,7 +76,7 @@ class LoginStateHolder(val context : Context, private val autoDisposable: AutoDi
                     )
                 }
                 _uiState.update { it.copy(isLoading = false) }
-            }).addToAutoDisposable(autoDisposable)
+            })
     }
 
 
